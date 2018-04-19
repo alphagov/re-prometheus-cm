@@ -1,0 +1,18 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: puppet_apply
+  mainfests_path: manifests
+  modules_path: modules
+  hiera_data_path: data
+  hiera_config_path: hiera.yaml
+  require_chef_for_busser: false
+
+platforms:
+  - name: ubuntu-16.04
+
+suites:
+  - name: default
+    manifest: site.pp 
