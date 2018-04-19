@@ -1,9 +1,9 @@
 ---
 version: 5
 
-defaults:  # Used for any hierarchy level that omits these keys.
-  datadir: hiera         # This path is relative to hiera.yaml's directory.
-  data_hash: yaml_data  # Use the built-in YAML backend.
+defaults:  
+  datadir: hiera  
+  data_hash: yaml_data
 
 hierarchy:
   - name: "User data file"      
