@@ -1,8 +1,4 @@
 ---
-profile::hiera_test::ssl: false
-profile::hiera_test::backups_enabled: true
-
-
 #user { 'resource title':
 #  name                 => # (namevar) The user name. While naming limitations vary by...
 #  ensure               => # The basic state that the object should be in....
