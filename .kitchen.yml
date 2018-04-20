@@ -1,6 +1,8 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  aws_ssh_key_id: nil
+  region: us-west-2
 
 provisioner:
   name: puppet_apply
@@ -12,6 +14,8 @@ provisioner:
 
 platforms:
   - name: ubuntu-16.04
+    driver:
+      image_id: ami-96a818fe
 
 suites:
   - name: default
