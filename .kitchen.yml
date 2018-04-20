@@ -21,8 +21,6 @@ provisioner:
 
 platforms:
   - name: ubuntu-16.04
-    driver:
-      image_id: ami-74e6b80d
 
 suites:
   - name: default
