@@ -6,7 +6,7 @@ provisioner:
   name: puppet_apply
   mainfests_path: manifests
   modules_path: modules
-  hiera_data_path: data
+  hiera_data_path: hiera
   hiera_config_path: hiera.yaml
   require_chef_for_busser: false
 
