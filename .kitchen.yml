@@ -13,6 +13,13 @@ provisioner:
 platforms:
   - name: ubuntu-16.04
 
+verifier:
+  name: inspec
+  sudo: true
+
 suites:
   - name: default
-    manifest: site.pp 
+    manifest: site.pp
+    verifier:
+      inspec_tests:
+        - path: test/intergration/default

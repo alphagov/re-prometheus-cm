@@ -1,0 +1,27 @@
+{
+    "users":[
+      {"username":"davidking", "group":"sudo", "shell":"/bin/bash", "sudo":"ALL=(ALL) NOPASSWD:ALL", "ssh_authorized_keys":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC2a1hthz3fr/odHHUDPaRT0NpHNF6AK3LrnMm9x737eP3SQBejjqSMreUikYh36jTv4w5LiQ63npVlMp1zlQXAtc11st2tVEM+KiQQgWLlVUzNQCN/LPPlDOtR0oYDYUVQo/fZ5EBK6pi5f3jA9tMXghnSNvoUELSvuJmKYgRHRr4k1nl+8SKFs/ZdjEJDzZAnoZe8CEYT4J43HW0EKieUBf0KhbxUXfNNoe17FF5CH3z3/06Ebq6JaqinwUOb357SlV6k5+NARHgwITKYvajVKwrSggx/6WgcjEEKLwZWiHguPJakkr+oM7RKTn2kAeLEkegZGimYatsRxt592W+GzMpf5JXEfVnvfzQ39cSHHb4OLpCGDTXJadPgy7dNyRiHvwJD0qC6x4sTpAwWqQZxozAYXtKSg02v/b0Ai30AduHGhcaIV3/l/jkcluJ3LVtFp7xIyk4EvTnuJAC4+xRN42f+Zcv2iRc8/q4JRSiJ9XC/k4+3wrJ2bE7wLFWpsr91TAfvqg4kEOXA1KKIcASu+8Q5CFR3dGdSWNK/FYNReS1QMsrZp4tZvm50mL7H0NokQGkGTvBbLdZ7Lqj7tPe8uf4XoTxMbAmRUuhZOps0pgL6IIigDhUeXcnczIlg2lQRcIRxu9EQ44Qv+0QZp+5eZLJxgcklg4Z4JbHr7REb0w== david.king@digital.cabinet-office.gov.uk"},
+      {"username":"jonathanhallam", "group":"sudo", "shell":"/bin/bash", "sudo":"ALL=(ALL) NOPASSWD:ALL", "ssh_authorized_keys":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCbhuGtTqXfhGAJUREY8foyy522FQ9djFwYAat0QU2C8eg8TnoiGOxdJaHg3JRikDEJVrpjGyCs3PJMUoTOzeb29qt99fhMAajSEohAXZVFbDv8RUCE3S6EiZNi/F4aV9Mq86rbKOgJTPAnIBr3En6qnBR7Z7Xvu8ooVcAiB8dozFFSbgNitpjVLIFUx10LnzqwtI4TrLKP+aM5HwmIZ0B90cJOwfMOaD2tOqldRfowcaYAX0zloUxS6lTS8PSwLr2T27xT44OhvG6aNyVzNbXkhZphQ5qEPI0NIzjtb3GkiE17ApZIF3iAa422ONlz+LbGQrjFdAtvCgjDZ3McA+gddbbS1s5cg+dU7X6HM3F8bfasd4B1UJwRA18XfLHDhSRQsETfLsDHUgrosJTLAxmx41SPY8CSShVDx6q9M6POalzqU/2V924RvaODrbimfGBR64JZ8mbvnNB9kwxm2dBx+jDx51dgTs7k3+YjvYKWRVq1qJtgFFQcaH1nZagrj9SCKJ7Won5UfsZM32VS6QNVtavCpVSeaz26ajuMBnKqNIAP2fL0j/QDsRdBCrZGAH09QJ2Y1+N2I4pjb0Cr5/dbd++hf3rdNdRt/5pYjlr1x1enPTqfsZKKuSNKR+lkp6ttx7dlphxtRzqsuQqz3tImKwUXkxaMeKmSb4j/j7bGTw== jonathan.hallam@digital.cabinet-office.gov.uk"},
+      {"username":"davidjeche", "group":"sudo", "shell":"/bin/bash", "sudo":"ALL=(ALL) NOPASSWD:ALL", "ssh_authorized_keys":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOF8CzMROmqIH2ooKidlwD4dYLmC43LqhHGcekpuMNQtnHnK50TR3RmtTfWbjODKd7ndsqM3Qd2DV7VtxJScfIrLNHTwtqmSLDZwM5Z/rDmVSiMzdJvk5SGl4Kw6jRO7azq7xCTO0wxPxxofZWLpNPR/IvUsbfuP1P+MqqSRIn2SlzasW4qEJ2IE9h+IBi9ecEgt+/GDzdfpxoJCk9MKXWeIKT3Ct32ZZ+08BHNb10DfBJ4dIAsXrVQg13xI4Rdwstb+3mMdReVLazzZ3q3DCHp0oIyGVR/v+fCmga6EfUeobdmXjqEzzTJeBPZnMOGAwrlvgsDOgDABQgX5I8YUGn david.jeche@digital.cabinet-office.gov.uk"},
+      {"username":"prometheus", "group":"", "shell":"/bin/false", "sudo":"", "ssh_authorized_keys":""}
+    ],
+    "packages":[
+      {"name":"chrony"},
+      {"name":"nginx"},
+      {"name":"ruby"},
+      {"name":"python-pip"}
+    ],
+    "services":[
+      {"name":"nginx"},
+      {"name":"prometheus"}
+    ],
+    "files":[ 
+      {"location":"/etc/cron.d/lets_encrypt_renewal","ownerby":"root","group":"root"},
+      {"location":"/etc/filebeat/filebeat.yml","ownerby":"root","group":"root"},
+      {"location":"/etc/prometheus/prometheus.yml","ownerby":"prometheus","group":"prometheus"},
+      {"location":"/etc/cron.d/sync_prometheus_discovery_reboot","ownerby":"root","group":"root"},
+      {"location":"/etc/nginx/sites-available/default","ownerby":"root","group":"root"},
+      {"location":"/etc/cron.d/sync_prometheus_discovery","ownerby":"root","group":"root"},
+      {"location":"/etc/systemd/system/prometheus.service","ownerby":"root","group":"root"}
+    ]
+  }

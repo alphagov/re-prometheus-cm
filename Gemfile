@@ -3,7 +3,7 @@ source "https://rubygems.org"
 
 gem 'kitchen-ec2', '~> 2.2.1'
 gem 'aws-sdk', '~> 2'
-gem "inspec"
+gem 'kitchen-inspec'
 gem "test-kitchen" 
 gem "kitchen-puppet" 
 gem "kitchen-docker" 

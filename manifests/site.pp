@@ -3,18 +3,7 @@ $ssh_keys = lookup('accounts::sshkeys')
 
 $defaults_users_settings = {
   managehome => true,
-}
-
-file { '/root/site-conf.test':
-    ensure => 'file',
-}
-
-file { '/root/site-conf2.test':
-    ensure => 'file',
-}
-
-file { '/root/site-conf3.test':
-    ensure => 'file',
+  groups     => 'sudo'
 }
 
 cron { 'puppet_run_gitpull':
