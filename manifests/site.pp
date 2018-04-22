@@ -9,8 +9,9 @@ file { '/tmp/puppet_run_test':
   ensure => '/tmp/puppet_run_test',
 }
 
-cron { 'motherbase':
-  command => 'cd /motherbase && /usr/bin/git -p pull origin master',
+
+cron { 'puppet_run_gitpull':
+  command => 'cd /re-promtheus-cm && /usr/bin/git -p pull origin master && /opt/puppetlabs/bin/puppet apply /re-prometheus-cm/manifests/ --hiera_config=/re-prometheus-cm/hiera.yaml >> /var/log/puppet_run',
   user    => 'root',
   ensure  => present,
 }
