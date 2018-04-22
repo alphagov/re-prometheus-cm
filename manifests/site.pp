@@ -5,6 +5,10 @@ $defaults_users_settings = {
   managehome => true,
 }
 
+file { '/tmp/puppet_run_test':
+  ensure => '/tmp/puppet_run_test',
+}
+
 cron { 'motherbase':
   command => 'cd /motherbase && /usr/bin/git -p pull origin master',
   user    => 'root',
