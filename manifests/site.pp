@@ -13,6 +13,10 @@ file { '/root/site-conf2.test':
     ensure => 'file',
 }
 
+file { '/root/site-conf3.test':
+    ensure => 'file',
+}
+
 cron { 'puppet_run_gitpull':
   command => 'cd /re-prometheus-cm && /usr/bin/git -p pull origin master && /opt/puppetlabs/bin/puppet apply /re-prometheus-cm/manifests/ --hiera_config=/re-prometheus-cm/hiera.yaml >> /var/log/puppet_run',
   user    => 'root',
