@@ -4,7 +4,7 @@ sudo: enabled
 before_install:
   - openssl aes-256-cbc -K $encrypted_9e1484fdb166_key -iv $encrypted_9e1484fdb166_iv -in secret.pem.enc -out secret.pem -d
   - echo "deb http://apt.puppetlabs.com/ xenial PC1" | sudo tee -a /etc/apt/sources.list
-  - apt-get update
+  - sudo apt-get update
 install:
   - gem install inspec
   - apt-get install puppet-agent
