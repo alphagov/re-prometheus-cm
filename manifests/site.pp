@@ -6,21 +6,20 @@ $defaults_users_settings = {
 }
 
 file { '/etc/sudoers.d/80-gdsadmins-group':
-  ensure => present,
-  mode => "0440",
-  content => "%gdsadmins ALL=(ALL) NOPASSWD:ALL"
+  ensure  => present,
+  mode    => '0440',
+  content => '%gdsadmins ALL=(ALL) NOPASSWD:ALL'
 }
 
 group { 'gdsadmins_sudo':
-  name => 'gdsadmins',
   ensure => present,
+  name   => 'gdsadmins',
 }
 
-
 cron { 'puppet_run_gitpull':
-  command => 'cd /re-prometheus-cm && /usr/bin/git -p pull origin master && /opt/puppetlabs/bin/puppet apply /re-prometheus-cm/manifests/ --hiera_config=/re-prometheus-cm/hiera.yaml >> /var/log/puppet_run',
-  user    => 'root',
   ensure  => present,
+  command => 'cd /re-prometheus-cm && /usr/bin/git -p pull origin master && /opt/puppetlabs/bin/puppet apply manifests/ --hiera_config=hiera.yaml',
+  user    => 'root',
 }
 
 create_resources(user, $user_accounts, $defaults_users_settings)
