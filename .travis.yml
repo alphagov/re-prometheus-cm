@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get update
 install:
   - gem install inspec
-  - sudo apt-get install puppet-agent
+  - sudo apt-get install puppet-agent -y
   - which puppet
   - /opt/puppetlabs/bin/puppet apply manifests/ --hiera_config=hiera.yaml
 script: inspec exec test/intergration/default
