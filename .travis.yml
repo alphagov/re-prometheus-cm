@@ -3,7 +3,7 @@ rvm:
 sudo: enabled
 before_install:
   - openssl aes-256-cbc -K $encrypted_9e1484fdb166_key -iv $encrypted_9e1484fdb166_iv -in secret.pem.enc -out secret.pem -d
-  - sh -c 'echo "deb http://apt.puppetlabs.com// xenial PC1" >> /etc/apt/sources.list.d/puppet.list'
+  - echo "deb http://apt.puppetlabs.com/ xenial PC1" | sudo tee -a /etc/apt/sources.list
   - apt-get update
 install:
   - gem install inspec
