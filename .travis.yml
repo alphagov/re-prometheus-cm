@@ -1,6 +1,8 @@
-language: ruby
 rvm:
  - 2.4
 sudo: enabled
+before_install:
+  - openssl aes-256-cbc -K $encrypted_9e1484fdb166_key -iv $encrypted_9e1484fdb166_iv -in secret.pem.enc -out secret.pem -d
 install:
   - bundle install
+script: kitchen test
