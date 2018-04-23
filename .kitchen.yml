@@ -6,7 +6,7 @@ driver:
 
 
 transport:
-  ssh_key: ~/Downloads/insecure-test-key-djeche.pem
+  ssh_key: secret.pem
   connection_timeout: 10
   connection_retries: 5
   username: ubuntu
@@ -25,7 +25,6 @@ platforms:
 verifier:
   name: inspec
   sudo: true
-
 
 suites:
   - name: default

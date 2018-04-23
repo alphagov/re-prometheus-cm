@@ -1,2 +1,3 @@
 .kitchen
+secret.pem
 Gemfile.lock
