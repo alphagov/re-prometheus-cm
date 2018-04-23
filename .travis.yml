@@ -1,13 +1,14 @@
+#turns out this does not run as root :/,
 rvm:
  - 2.4
 sudo: enabled
 before_install:
   - openssl aes-256-cbc -K $encrypted_9e1484fdb166_key -iv $encrypted_9e1484fdb166_iv -in secret.pem.enc -out secret.pem -d
-  - echo "deb http://apt.puppetlabs.com/ xenial PC1" | sudo tee -a /etc/apt/sources.list
+  - echo "deb http://apt.puppetlabs.com/ trusty PC1" | sudo tee -a /etc/apt/sources.list
   - sudo apt-get update
 install:
   - gem install inspec
-  - apt-get install puppet-agent
+  - sudo apt-get install puppet-agent
   - which puppet
   - /opt/puppetlabs/bin/puppet apply manifests/ --hiera_config=hiera.yaml
 script: inspec exec test/intergration/default
