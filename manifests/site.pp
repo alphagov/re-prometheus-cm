@@ -3,8 +3,19 @@ $ssh_keys = lookup('accounts::sshkeys')
 
 $defaults_users_settings = {
   managehome => true,
-  groups     => 'sudo'
 }
+
+file { '/etc/sudoers.d/80-gdsadmins-group':
+  ensure => present,
+  mode => "0440",
+  content => "%gdsadmins ALL=(ALL) NOPASSWD:ALL"
+}
+
+group { 'gdsadmins_sudo':
+  name => 'gdsadmins',
+  ensure => present,
+}
+
 
 cron { 'puppet_run_gitpull':
   command => 'cd /re-prometheus-cm && /usr/bin/git -p pull origin master && /opt/puppetlabs/bin/puppet apply /re-prometheus-cm/manifests/ --hiera_config=/re-prometheus-cm/hiera.yaml >> /var/log/puppet_run',

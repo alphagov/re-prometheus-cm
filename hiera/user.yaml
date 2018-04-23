@@ -1,74 +1,34 @@
 ---
-#user { 'resource title':
-#  name                 => # (namevar) The user name. While naming limitations vary by...
-#  ensure               => # The basic state that the object should be in....
-#  allowdupe            => # Whether to allow duplicate UIDs. Defaults to...
-#  attribute_membership => # Whether specified attribute value pairs should...
-#  attributes           => # Specify AIX attributes for the user in an array...
-#  auth_membership      => # Whether specified auths should be considered the 
-#  auths                => # The auths the user has.  Multiple auths should...
-#  name              => # A description of the user.  Generally the user's 
-#  expiry               => # The expiry date for this user. Must be provided...
-#  forcelocal           => # Forces the management of local accounts when...
-#  gid                  => # The user's primary group.  Can be specified...
-#  groups               => # The groups to which the user belongs.  The...
-#  home                 => # The home directory of the user.  The directory...
-#  ia_load_module       => # The name of the I&A module to use to manage this 
-#  iterations           => # This is the number of iterations of a chained...
-#  key_membership       => # Whether specified key/value pairs should be...
-#  keys                 => # Specify user attributes in an array of key ...
-#  loginclass           => # The name of login class to which the user...
-#  managehome           => # Whether to manage the home directory when Puppet 
-#  membership           => # If `minimum` is specified, Puppet will ensure...
-#  password             => # The user's password, in whatever encrypted...
-#  password_max_age     => # The maximum number of days a password may be...
-#  password_min_age     => # The minimum number of days a password must be...
-#  profile_membership   => # Whether specified roles should be treated as the 
-#  profiles             => # The profiles the user has.  Multiple profiles...
-#  project              => # The name of the project associated with a user.  
-#  provider             => # The specific backend to use for this `user...
-#  purge_ssh_keys       => # Whether to purge authorized SSH keys for this...
-#  role_membership      => # Whether specified roles should be considered the 
-#  roles                => # The roles the user has.  Multiple roles should...
-#  salt                 => # This is the 32-byte salt used to generate the...
-#  shell                => # The user's login shell.  The shell must exist...
-#  system               => # Whether the user is a system user, according to...
-#  uid                  => # The user ID; must be specified numerically. If...
-  # ...plus any applicable metaparameters.
-#} 
-
-
 accounts::user:
     davidking:
-      groups: sudo
+      gid: gdsadmins
       shell: /bin/bash
 
     jonathanhallam:
-      groups: sudo
+      gid: gdsadmins
       shell: /bin/bash
 
     davidjeche:
-      groups: sudo
+      gid: gdsadmins
       shell: /bin/bash
 
     kentsang:
-      groups: sudo
+      gid: gdsadmins
       shell: /bin/bash
 
     danielroseman:
-      groups: sudo
+      gid: gdsadmins
       shell: /bin/bash
 
     deanwilson:
-      groups: sudo
+      groups: gdsadmins
       shell: /bin/bash
+      
 
-    davidmcdonal:
-      groups: sudo
+    davidmcdonald:
+      groups: gdsadmins
       shell: /bin/bash
     
-    prometheus:
-      system: true
 
 accounts::sshkeys:
   davidking_sshkey:
@@ -115,7 +75,7 @@ accounts::sshkeys:
       key: 'AAAAB3NzaC1yc2EAAAADAQABAAACAQDAmm4kdSdiwYnIhn9wcuNGmTQllNNcaKALRT8z/3Q0Z+vSkqnhIA6gHWFZn7ZZ0u8Zfv5rig+lyJNPZ6e+1uwxCtLABNe8G1NPUdgqhirblBDy0uhLaeiCcwOP/oiZ/M94+LxM2aPLoA9rwR47rviXUwiJ3rjQV4IZzGDuB/p1d7ttaBra39HMkqz5K1Y+I7T9mhCuoU4Rd88NHVx4NmseUQTStdulH6sy+shARMUg2M4PoXEKcWasJUd2s7CuuWa3ZHjL7EQePM1eqgUFPQloac98f3RUVAfVb9AbPhA4t/zewOZS1sYf1kxO6lrGw1P7qbXTmHUR5eTGeW/hKkZSbz5VZeN6ZtihQ3mogzmP+bsDaiuAfF2LQWijwQI7M7xjk7NBjvFfCkmnw1MymSC26vnIrb+ITfPefgi2M+uaL6HXsQvgdEL6VT1pTewD8494UJtPARf472npBWXrMjDpier711rMY5HtSwenq6KE0DHFp1bFXZ+gUZeMzvyIynB4HmyNGZpZf41Lh8uenOy49/ouO9aHMN8lcRLEz9aPQXyjAWT+FooXRQjT+BZWZ3A5t1IJB7Mfbxsah+7wE+CHOtpydL4bDR+wGIR4dm65YegeBviMN2FlCle6CnU2baDK23LTCYJalBV8K17a9ydxvHgelf0nvabTb/f93PQhjQ=='
 
   davidmcdonald_sshkey:
-      user: 'davidmcdonal'
+      user: 'davidmcdonald'
       type: 'ssh-rsa'
       name: 'idavidmcdonald@me.com'
       ensure: 'present'

@@ -1,6 +1,15 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  aws_ssh_key_id: insecure-test-key-djeche
+  region: eu-west-1
+
+
+transport:
+  ssh_key: ~/Downloads/insecure-test-key-djeche.pem
+  connection_timeout: 10
+  connection_retries: 5
+  username: ubuntu
 
 provisioner:
   name: puppet_apply
@@ -17,9 +26,10 @@ verifier:
   name: inspec
   sudo: true
 
+
 suites:
   - name: default
-    manifest: site.pp
+    manifest: site.pp 
     verifier:
       inspec_tests:
         - path: test/intergration/default
