@@ -3,8 +3,12 @@ rvm:
 sudo: enabled
 before_install:
   - openssl aes-256-cbc -K $encrypted_9e1484fdb166_key -iv $encrypted_9e1484fdb166_iv -in secret.pem.enc -out secret.pem -d
-  - './install_puppet_5_agent.sh'
+  - 'curl -L -O https://apt.puppetlabs.com/puppet5-release-trusty.deb'
+  - 'dpkg -i puppet5-release-trusty.deb'
+  - 'apt-get update'
 install:
   - gem install inspec
+  - apt-get install puppet-agent
+  - which puppet
   - /opt/puppetlabs/bin/puppet apply manifests/ --hiera_config=hiera.yaml
 script: inspec exec test/intergration/default
