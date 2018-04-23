@@ -9,5 +9,5 @@ before_install:
 install:
   - gem install inspec
   - sudo apt-get install puppet-agent -y --allow-unauthenticated
-  - sudo puppet apply manifests/ --hiera_config=hiera.yaml
+  - sudo /opt/puppetlabs/bin/puppet apply manifests/ --hiera_config=hiera.yaml
 script: inspec exec test/intergration/default
