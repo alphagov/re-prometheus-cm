@@ -17,9 +17,11 @@ group { 'gdsadmins_sudo':
 }
 
 file { '/root/testing_pull':
-  ensure => present,
+  ensure => absent,
   content => '',
 }
+#I feel a little ashamed on the usage of git, will most likely move to internal repo :) 
+#With IAM profiles that will pull and auto provision. A workflow would be required for that.
 
 cron { 'puppet_apply_cron':
   ensure  => present,
