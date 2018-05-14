@@ -22,11 +22,6 @@ cron { 'gitpull_puppet_repo':
   user    => 'root',
 }
 
-file { '/root/testing_pull':
-  ensure => present,
-  content => '',
-}
-
 cron { 'puppet_apply_2m':
   ensure  => present,
   command => 'cd /re-prometheus-cm && /opt/puppetlabs/bin/puppet apply manifests --hiera_config=hiera.yaml',
