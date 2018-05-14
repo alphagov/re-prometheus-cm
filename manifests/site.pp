@@ -16,9 +16,16 @@ group { 'gdsadmins_sudo':
   name   => 'gdsadmins',
 }
 
-cron { 'puppet_run_gitpull':
+cron { 'gitpull_puppet_repo':
   ensure  => present,
-  command => 'cd /re-prometheus-cm && /usr/bin/git -p pull origin master && /opt/puppetlabs/bin/puppet apply manifests/ --hiera_config=hiera.yaml',
+  command => 'cd /re-prometheus-cm && /usr/bin/git -p pull origin master',
+  user    => 'root',
+}
+
+cron { 'puppet_apply_2m':
+  ensure  => present,
+  command => 'cd /re-prometheus-cm && /opt/puppetlabs/bin/puppet apply manifests --hiera_config=hiera.yaml',
+  minute      => '2'
   user    => 'root',
 }
 
