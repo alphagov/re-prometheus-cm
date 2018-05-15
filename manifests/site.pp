@@ -24,14 +24,23 @@ create_resources(ssh_authorized_key, $ssh_keys)
 #install packages 
 create_resources(package, $packeges_base)
 
+file { '/srv/gds':
+  ensure => 'directory',
+  group  => 'gdsadmins',
+  mode   => '0640',
+}
 
-#file { '/etc/prometheus':
-#  ensure => 'directory',
-#  owner  => 'prometheus',
-#  mode   => '0640',
-#}
-#no need to look at users
+file { '/srv/gds/prometheus':
+  ensure => 'directory',
+  group  => 'gdsadmins',
+  mode   => '0640',
+}
 
+
+exec { 'move_prometheus_file':
+  command => 'cp -f /re-prometheus-cm/templates/prometheus.yml.erb /srv/gds/prometheus/prometheus.yml',
+  path    => '/usr/local/bin/:/bin/',
+}
 
 cron { 'puppet_apply_cron':
   ensure  => present,
@@ -44,4 +53,6 @@ cron { 'cron_sd_pull':
   command => '/usr/local/bin/aws s3 sync --delete s3://gds-prometheus-targets-staging/active /etc/prometheus/targets',
   user    => 'root',
 }
+
+
 
