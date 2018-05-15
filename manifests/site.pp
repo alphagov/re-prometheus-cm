@@ -26,14 +26,14 @@ create_resources(package, $packeges_base)
 
 file { '/srv/gds':
   ensure => 'directory',
-  group  => 'gdsadmins',
-  mode   => '0640',
+  group  => 'root',
+  mode   => '0660',
 }
 
 file { '/srv/gds/prometheus':
   ensure => 'directory',
-  group  => 'gdsadmins',
-  mode   => '0640',
+  group  => 'root',
+  mode   => '0660',
 }
 
 
@@ -50,7 +50,7 @@ cron { 'puppet_apply_cron':
 
 cron { 'cron_sd_pull':
   ensure  => present,
-  command => '/usr/local/bin/aws s3 sync --delete s3://gds-prometheus-targets-staging/active /etc/prometheus/targets',
+  command => '/usr/local/bin/aws s3 sync --delete s3://gds-prometheus-targets-staging/active /srv/prometheus/targets',
   user    => 'root',
 }
 
