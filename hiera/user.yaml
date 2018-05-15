@@ -12,6 +12,9 @@ accounts::user:
       gid: gdsadmins
       shell: /bin/bash
 
+    prometheus:
+      system: true
+      
     davidjeche:
       gid: gdsadmins
       shell: /bin/bash
@@ -92,3 +95,13 @@ accounts::sshkeys:
       ensure: 'present'
       key: 'AAAAB3NzaC1yc2EAAAADAQABAAACAQCW0r06S4dA8iyzMmEzaO54pi38e6ZlqaQYDgxZHmx8WKpeKLvjOUppUAs93zla47HdmBlxOzIqF30ZWvR9Rn+TckZOk9M2RcDjpYk2PRFkqxfU8at4O6OyfbbolUoYDDj7837DZv2GMGpFool5IeU838ik3B0/KWhzKDA9JP2vRtZy7RTb3wx3uPh8akb4CksNgJ570c1fdMhWWLR6x53QzOyiQekZfmRYX+emO4dTBFO4HAI6hvXC4DLHWKRPFWhkJO36kMUoykbY1VkO0mFZa3E6OoYHNYESI1Gams4ZVedL+BLTkX35MYQDSiwFFoqIGf/w6lkZ+6LutD2iiN2pSJowHjEqg4TkTPsYW8z00li5qpkVSGdyCLy3U1bZS3rUlPeRu7olIiSYGIgr9vDcAZfoz6MhF0uaEErpBAf0uLMm/hTMRnQ4vuyvNYazIlgFnkDdX9A9xltTZPKrPSPYH6BjIud4JciR5wCRjWky8LR7rLMMQke/+aWq/NVfLSLu7gNBSbYEwE2wj8/ZZ9IzVRf8wnEOa0J2aQikG13zMY42Qn3Sy0yVlXH2qtbjghPU8FWqKTDqvd1P75tFPixCao07RUY/9IgCQzZSwyhJVW3gnaRPyliOWBY9UkhbnRSJ5GKlSBuoUiFJwF6EqVEWZxV0FjZZo3l7D4zpwHB1pw=='
 
+packages::base:
+  awscli:
+    ensure: present
+    provider: pip
+    require: Package[python-pip]
+
+  vim:
+    ensure: present
+  python-pip:
+    ensure: present

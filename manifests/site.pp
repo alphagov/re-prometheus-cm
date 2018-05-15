@@ -1,5 +1,7 @@
 $user_accounts = lookup('accounts::user')
 $ssh_keys = lookup('accounts::sshkeys')
+$packeges_base = lookup('packages::base')
+
 
 $defaults_users_settings = {
   managehome => true,
@@ -16,12 +18,20 @@ group { 'gdsadmins_sudo':
   name   => 'gdsadmins',
 }
 
-file { '/root/testing_pull':
-  ensure => absent,
-  content => '',
-}
-#I feel a little ashamed on the usage of git, will most likely move to internal repo :) 
-#With IAM profiles that will pull and auto provision. A workflow would be required for that.
+#create users with ssh keys
+create_resources(user, $user_accounts, $defaults_users_settings)
+create_resources(ssh_authorized_key, $ssh_keys)
+#install packages 
+create_resources(package, $packeges_base)
+
+
+#file { '/etc/prometheus':
+#  ensure => 'directory',
+#  owner  => 'prometheus',
+#  mode   => '0640',
+#}
+#no need to look at users
+
 
 cron { 'puppet_apply_cron':
   ensure  => present,
@@ -29,5 +39,9 @@ cron { 'puppet_apply_cron':
   user    => 'root',
 }
 
-create_resources(user, $user_accounts, $defaults_users_settings)
-create_resources(ssh_authorized_key, $ssh_keys)
+cron { 'cron_sd_pull':
+  ensure  => present,
+  command => '/usr/local/bin/aws s3 sync --delete s3://gds-prometheus-targets-staging/active /etc/prometheus/targets',
+  user    => 'root',
+}
+
