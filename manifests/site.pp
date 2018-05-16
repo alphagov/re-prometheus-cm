@@ -27,13 +27,13 @@ create_resources(package, $packeges_base)
 file { '/srv/gds':
   ensure => 'directory',
   group  => 'root',
-  mode   => '0755',
+  mode   => '0760',
 }
 
 file { '/srv/gds/prometheus':
   ensure => 'directory',
   group  => 'root',
-  mode   => '0755',
+  mode   => '0760',
 }
 
 
