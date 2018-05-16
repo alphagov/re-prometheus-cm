@@ -50,7 +50,7 @@ cron { 'puppet_apply_cron':
 
 cron { 'cron_sd_pull':
   ensure  => present,
-  command => '/usr/local/bin/aws s3 sync --delete s3://gds-prometheus-targets-staging/active /srv/prometheus/targets',
+  command => '/usr/local/bin/aws s3 sync --delete s3://gds-prometheus-targets-staging/active /srv/gds/prometheus/targets',
   user    => 'root',
 }
 
